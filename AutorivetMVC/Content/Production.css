@@ -3,7 +3,7 @@ H1 { padding: .5em; padding-top: 0; font-weight: bold;
 font-size: 1.5em; border-bottom: 2px solid gray; }
 DIV#content { padding: .9em; margin-left:10em }
 TABLE.Grid TD, TABLE.Grid TH { border-bottom: 1px dotted gray; text-align:left;/*word-break:keep-all; table-layout:fixed;*/  }
-TABLE.Grid { border-collapse: collapse; width:100%;margin-left: 100px; }
+TABLE.Grid { border-collapse: collapse; width:100%;margin-left: 0px; }
 TABLE.Grid TH.NumericCol, Table.Grid TD.NumericCol {
 text-align: right; padding-right: 1em; }
 FORM {margin-bottom: 0px; }

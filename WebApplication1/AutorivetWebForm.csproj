@@ -342,7 +342,7 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\mysqlsolution\mysqlsolution\GoumangToolKit.csproj">
+    <ProjectReference Include="..\..\GoumangToolKit\goumangToolKit\GoumangToolKit.csproj">
       <Project>{41f56599-8d65-48b1-ac56-99e8d146bc2d}</Project>
       <Name>GoumangToolKit</Name>
     </ProjectReference>

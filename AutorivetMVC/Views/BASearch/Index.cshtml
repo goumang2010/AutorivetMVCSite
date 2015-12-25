@@ -1,0 +1,77 @@
+﻿
+
+<script src="~/Scripts/jquery-2.1.4.js" type="text/javascript"></script>
+<script type="text/javascript" src=" @Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>loveBA</title>
+
+
+</head>
+<body>
+
+    <p>
+        输入要查询的文件编号，如151-001：
+       @using (Ajax.BeginForm("JsonDetails", new AjaxOptions
+       {
+           HttpMethod = "Post",
+           OnSuccess = "Show"
+       }))
+    {
+            
+            @Html.TextBox("Search")
+
+           <input type = "submit" value = "Search" />
+
+    }
+
+    </p>
+
+    @Styles.Render("~/Content/Production.css")
+    <div>
+        <table  class="Grid" id="Table">
+        </table>
+    </div>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+@*Use Ajax to update the data*@
+<script type="text/javascript">
+    function Show(data) {
+        //return data.filename
+       var jsonStr=eval(data)
+       var tableobj = document.getElementById("Table")
+       var tbtext="<tr><th>文件名</th><th>标题</th><th>操作</th></tr>"
+
+       for (var dd in jsonStr)
+        {
+            tbtext += "<tr><td>" + (jsonStr[dd].filename)+"</td>";
+            tbtext += "<td>" + (jsonStr[dd].title) + "</td>"
+            tbtext += "<td><a href=\"" + (jsonStr[dd].localpath) + "\">打开</a></td>"
+            tbtext += "</tr>";
+        }
+        tableobj.innerHTML=tbtext
+       
+        //alert(data);
+    }
+</script>
