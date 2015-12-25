@@ -20,7 +20,7 @@ namespace AutorivetMVC.Models.Tests
            
             var res = ff.Result;
            
-            Assert.AreEqual(ff.Result.Count(), 5);
+            Assert.AreEqual(ff.Result.Count(),590);
 
         }
     }

@@ -462,6 +462,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GoumangToolKit\GoumangToolKit.NET4.6\GoumangToolKit.NET4.6.csproj">
+      <Project>{0838a3fc-7aaf-4030-b03f-667da6413b4c}</Project>
+      <Name>GoumangToolKit.NET4.6</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\GoumangToolKit\goumangToolKit\GoumangToolKit.csproj">
       <Project>{41f56599-8d65-48b1-ac56-99e8d146bc2d}</Project>
       <Name>GoumangToolKit</Name>

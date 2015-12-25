@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoumangToolKit", "..\Gouman
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutorivetMVCTests", "AutorivetMVCTests\AutorivetMVCTests.csproj", "{6FF446A6-DFB4-4766-8B1E-1BA30B0B477F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SACISearch", "..\SACISearching\SACISearch\SACISearch.csproj", "{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoumangToolKit.NET4.6", "..\GoumangToolKit\GoumangToolKit.NET4.6\GoumangToolKit.NET4.6.csproj", "{0838A3FC-7AAF-4030-B03F-667DA6413B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,22 @@ Global
 		{6FF446A6-DFB4-4766-8B1E-1BA30B0B477F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FF446A6-DFB4-4766-8B1E-1BA30B0B477F}.Release|x86.ActiveCfg = Release|Any CPU
 		{6FF446A6-DFB4-4766-8B1E-1BA30B0B477F}.Release|x86.Build.0 = Release|Any CPU
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Debug|x86.ActiveCfg = Debug|x86
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Debug|x86.Build.0 = Debug|x86
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Release|x86.ActiveCfg = Release|x86
+		{7F06B16E-A6E2-4678-8D5A-D25EAC54E362}.Release|x86.Build.0 = Release|x86
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Debug|x86.Build.0 = Debug|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Release|x86.ActiveCfg = Release|Any CPU
+		{0838A3FC-7AAF-4030-B03F-667DA6413B4C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

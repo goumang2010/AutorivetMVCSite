@@ -15,7 +15,26 @@ namespace AutorivetMVC.Controllers
         }
 
 
+        //public async System.Threading.Tasks.Task<dynamic> JsonDetails(string Search)
+        //{
 
+
+        //    //lLoveBADoc f = new lLoveBADoc();
+        //    //var ff = await f.FetchData(Search);
+
+        //    ////   var res = ff.Result;
+
+
+        //    //var json = ff.Select(delegate (BsonDocument p)
+
+        //    //{
+        //    //    p.RemoveAt(0);
+        //    //    return p;
+        //    //}
+
+        //    // ).ToJson();
+        //    //return json;
+        //}
 
 
     }
