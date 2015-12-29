@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using AutorivetMVC.Models;
 using MongoDB.Bson;
+using GoumangToolKit;
 
 namespace AutorivetMVC.Controllers
 {
     public class BASearchController : Controller
     {
+        static string BApath = localMethod.GetConfigValue("BA_Basefolder", "DBCfg.py");
+        static string Localpath = localMethod.GetConfigValue("BA_SaveNetfolder", "DBCfg.py");
         // GET: BASearch
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
@@ -31,6 +34,8 @@ namespace AutorivetMVC.Controllers
 
             {
                 p.RemoveAt(0);
+                var lp = p["netpath"].AsString;
+                p["localpath"] = lp.Replace(BApath, Localpath);
                 return p;
             }
             

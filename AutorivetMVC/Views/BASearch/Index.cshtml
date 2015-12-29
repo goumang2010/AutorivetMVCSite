@@ -67,7 +67,7 @@
         {
             tbtext += "<tr><td>" + (jsonStr[dd].filename)+"</td>";
             tbtext += "<td>" + (jsonStr[dd].title) + "</td>"
-            tbtext += "<td><a href=\"" + (jsonStr[dd].localpath) + "\">打开</a></td>"
+            tbtext += "<td><a href=" + (jsonStr[dd].localpath) + ">打开</a></td>"
             tbtext += "</tr>";
         }
         tableobj.innerHTML=tbtext
