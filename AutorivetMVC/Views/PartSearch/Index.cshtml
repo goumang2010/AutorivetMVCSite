@@ -1,0 +1,120 @@
+﻿
+
+<script src="~/Scripts/jquery-2.1.4.js" type="text/javascript"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>loveBA</title>
+
+</head>
+<body>
+    @Styles.Render("~/Content/Production.css")
+    <h1 id="ttop">查询图纸、零件、组件</h1>
+    <div>
+        <div class="divleft">
+            <p>
+
+                @using (Ajax.BeginForm("JsonDetails", new AjaxOptions
+        {
+            HttpMethod = "Post",
+            OnSuccess = "Show"
+        }))
+        {
+
+                    @*@Html.TextBox("Search","",htmlAttributes: new { @TextMode = "MultiLine" })*@
+                    <textarea  name="SearchText" class="MultiText" id="SearchText" TextMode="MultiLine" @*style="height:500px"*@></textarea>
+
+
+                    <br />
+
+                    <select name="extention">
+                        <option value="CATDrawing"> 图纸 </option>
+                        <option value="CATPart"> 零件 </option>
+                        <option value="CATProduct"> 组件 </option>
+                        <option value="pdf"> PDF </option>
+                    </select>
+
+
+
+                    <input type="submit" value="Search" />
+
+        }
+            </p>
+        </div>
+        <div class="divright">
+            <table class="Grid" id="Table"></table>
+        </div>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+@*Use Ajax to update the data*@
+<script type="text/javascript">
+    function Show(data) {
+        //return data.filename
+       var jsonStr=eval(data)
+       var tableobj = document.getElementById("Table")
+       var tbtext=""
+       var tbtext = "<tr><th>查询图号</th><th>有效版次</th><th>下级装配号</th><th>名称</th><th>有效架次</th><th>分工</th><th>操作</th></tr>"
+       for (var dd in jsonStr)
+        {
+           tbtext += "<tr><td>" + (jsonStr[dd].DrawingNo) + "</td>";
+           tbtext += "<td>" + (jsonStr[dd].EffectRev) + "</td>"
+           tbtext += "<td>" + (jsonStr[dd].NHA) + "</td>"
+           tbtext += "<td>" + (jsonStr[dd].EngName) + "</td>"
+           tbtext += "<td>" + (jsonStr[dd].EffectBat) + "</td>"
+           tbtext += "<td>" + (jsonStr[dd].Work) + "</td>"
+           tbtext += "<td><button onclick=\"copyToClipboard(\'" + (jsonStr[dd].Href) + "\')\"> 打开</button></td>"
+            tbtext += "</tr>";
+        }
+        tableobj.innerHTML=tbtext
+
+        //alert(data);
+    }
+
+
+    function copyToClipboard(txt) {
+
+        if (window.clipboardData) {
+
+            window.clipboardData.clearData();
+
+            window.clipboardData.setData("Text", txt);
+
+            alert("已经成功复制到剪帖板上，请在任意文件夹窗口中粘贴打开！\r\n"+txt);
+    
+
+        }
+        else
+        {
+            var ht = document.getElementById("ttop")
+            ht.innerHTML = txt
+            alert("暂时无法复制到剪帖板上，已显示在上方，请自行复制，并在文件夹中打开！");
+        }
+
+    }
+
+
+
+</script>

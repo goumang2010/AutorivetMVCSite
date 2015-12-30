@@ -32,22 +32,22 @@ namespace WebApplication1
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow || e.Row.RowType == DataControlRowType.Header) 
-{ 
-               
-//保持列不变形 
-for (int i = 1; i < e.Row.Cells.Count-1; i++) 
-{ 
-//方法一： 
+            if (e.Row.RowType == DataControlRowType.DataRow || e.Row.RowType == DataControlRowType.Header)
+            {
 
-e.Row.Cells[i].Text = " " + e.Row.Cells[i].Text + " "; 
-e.Row.Cells[i].Wrap = false; 
-//方法二： 
-//e.Row.Cells[i].Text = "<nobr> " + e.Row.Cells[i].Text + " </nobr>"; 
-}
-e.Row.Cells[e.Row.Cells.Count-1].Visible=false; 
+                //保持列不变形 
+                for (int i = 1; i < e.Row.Cells.Count - 1; i++)
+                {
+                    //方法一： 
 
-} 
+                    e.Row.Cells[i].Text = " " + e.Row.Cells[i].Text + " ";
+                    e.Row.Cells[i].Wrap = false;
+                    //方法二： 
+                    //e.Row.Cells[i].Text = "<nobr> " + e.Row.Cells[i].Text + " </nobr>"; 
+                }
+                e.Row.Cells[e.Row.Cells.Count - 1].Visible = false;
+
+            }
 
 
         }
