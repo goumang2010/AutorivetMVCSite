@@ -23,21 +23,25 @@
             <p>
 
                 @using (Ajax.BeginForm("JsonDetails", new AjaxOptions
-        {
-            HttpMethod = "Post",
-            OnSuccess = "Show"
-        }))
-        {
+                {
+                    HttpMethod = "Post",
+                    OnSuccess = "Show",
+                    OnBegin= "Transition"
+                }))
+                {
 
                     @*@Html.TextBox("Search","",htmlAttributes: new { @TextMode = "MultiLine" })*@
+                    <label>输入图号或零件号,回车分隔</label>
+                    <br />
+                    <br />
                     <textarea  name="SearchText" class="MultiText" id="SearchText" TextMode="MultiLine" @*style="height:500px"*@></textarea>
 
 
                     <br />
 
                     <select name="extention">
-                        <option value="CATDrawing"> 图纸 </option>
                         <option value="CATPart"> 零件 </option>
+                        <option value="CATDrawing"> 图纸 </option>
                         <option value="CATProduct"> 组件 </option>
                         <option value="pdf"> PDF </option>
                     </select>
@@ -93,6 +97,11 @@
         //alert(data);
     }
 
+    function Transition() {
+   
+        var tableobj = document.getElementById("Table")
+        tableobj.innerHTML = "服务器正在取回数据，请耐心等待......"
+    }
 
     function copyToClipboard(txt) {
 

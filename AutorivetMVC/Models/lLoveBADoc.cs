@@ -21,7 +21,7 @@ namespace AutorivetMVC.Models
         {
             var client= (string)(localMethod.GetConfigValue("MONGO_URI","DBCfg.py"));
             var database =(string)(localMethod.GetConfigValue("MONGO_DATABASE", "DBCfg.py"));
-           var  collection = (string)(localMethod.GetConfigValue("MONGO_COLNAME", "DBCfg.py"));
+            var  collection = (string)(localMethod.GetConfigValue("MONGO_COLNAME", "DBCfg.py"));
             model = new MongoMethod(client, database, collection);
 
         }
