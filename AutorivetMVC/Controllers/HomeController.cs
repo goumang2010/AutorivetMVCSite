@@ -10,8 +10,8 @@ namespace AutorivetMVC.Controllers
     {
         public ActionResult Index()
         {
-
-            return Redirect("http://192.168.3.32/");
+            return View();
+         //   return Redirect("http://192.168.3.32/");
         }
 
         public ActionResult About()
@@ -27,5 +27,7 @@ namespace AutorivetMVC.Controllers
 
             return View();
         }
+
+
     }
 }

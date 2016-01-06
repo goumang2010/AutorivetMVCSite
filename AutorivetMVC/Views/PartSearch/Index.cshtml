@@ -80,7 +80,7 @@
        var jsonStr=eval(data)
        var tableobj = document.getElementById("Table")
        var tbtext=""
-       var tbtext = "<tr><th>查询图号</th><th>有效版次</th><th>下级装配号</th><th>名称</th><th>有效架次</th><th>分工</th><th>操作</th></tr>"
+       var tbtext = "<tr><th>查询图号</th><th>有效版次</th><th>下级装配号</th><th>名称</th><th>有效架次</th><th>分工</th><th>&nbsp&nbsp操作</th></tr>"
        for (var dd in jsonStr)
         {
            tbtext += "<tr><td>" + (jsonStr[dd].DrawingNo) + "</td>";
@@ -89,7 +89,7 @@
            tbtext += "<td>" + (jsonStr[dd].EngName) + "</td>"
            tbtext += "<td>" + (jsonStr[dd].EffectBat) + "</td>"
            tbtext += "<td>" + (jsonStr[dd].Work) + "</td>"
-           tbtext += "<td><button onclick=\"copyToClipboard(\'" + (jsonStr[dd].Href) + "\')\"> 打开</button></td>"
+           tbtext += "<td><button class=\"btn btn-link\" onclick=\"copyToClipboard(\'" + (jsonStr[dd].Href) + "\')\"> 打开</button></td>"
             tbtext += "</tr>";
         }
         tableobj.innerHTML=tbtext

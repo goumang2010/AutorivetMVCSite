@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NC_TOOL;
+﻿using System.Collections.Generic;
+using GoumangToolKit;
 
 namespace AutorivetMVC.Models
 {
-  public  class Product : IProduct
+    public  class Product : IProduct
     {
         public string ProgramNum
         {

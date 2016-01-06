@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using GoumangToolKit;
 using System.Data;
-using NC_TOOL;
 using AutorivetMVC.Models;
 
 namespace MvcApplication1.Models
