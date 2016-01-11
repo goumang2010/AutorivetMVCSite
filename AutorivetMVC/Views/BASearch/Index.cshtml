@@ -12,11 +12,12 @@
     <h1>输入要查询的文件编号，如151-001,可查询一切BA的文件，注意不要带 BAPS等字符</h1>
     <p>
         @using (Ajax.BeginForm("JsonDetails", new AjaxOptions
-            {
-                HttpMethod = "Post",
-                OnSuccess = "Show"
-            }))
-            {
+        {
+            HttpMethod = "Post",
+            OnSuccess = "Show",
+            OnBegin= "Transition"
+        }))
+        {
             <input name="Search" type="text" value="@ViewBag.searchString" />
             <input type="submit" value="Search" />
         }

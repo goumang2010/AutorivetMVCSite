@@ -1,6 +1,6 @@
 ﻿    function Show(data) {
         //return data.filename
-        var jsonStr=eval(data)
+        var jsonStr =eval(data)
         var tableobj = document.getElementById("Table")
         var tbtext=""
         var tbtext = "<tr><th>查询图号</th><th>有效版次</th><th>下级装配号</th><th>名称</th><th>有效架次</th><th>分工</th><th>&nbsp&nbsp操作</th></tr>"
