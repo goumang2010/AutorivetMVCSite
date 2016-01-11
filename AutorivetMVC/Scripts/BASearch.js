@@ -1,6 +1,6 @@
 ﻿    function Show(data) {
         //return data.filename
-        var jsonStr = eval(data)
+        var jsonStr = JSON.parse(data)
         var tableobj = document.getElementById("Table")
         var tbtext = "<tr><th>文件名</th><th>标题</th><th>操作</th></tr>"
         for (var dd in jsonStr) {
@@ -12,3 +12,23 @@
         tableobj.innerHTML = tbtext
         //alert(data);
     }
+
+
+    //function fetchAjax(str) {
+
+    //    var aj = $.ajax({
+    //        url: 'productManager_reverseUpdate',  
+    //        data: {
+    //            name: str,
+    //        },
+    //        type: 'post',
+    //        cache: false,
+    //        dataType: 'json',
+    //        success: Show(data) ,
+    //        error: function () {
+    //            // view("异常！");  
+    //            alert("异常！");
+    //        }
+    //    });
+
+    //}
