@@ -7,7 +7,6 @@ using AutorivetMVC.Models;
 using MongoDB.Bson;
 using GoumangToolKit;
 using System.Threading.Tasks;
-
 namespace AutorivetMVC.Controllers
 {
     public class BASearchController : Controller
@@ -25,7 +24,6 @@ namespace AutorivetMVC.Controllers
                 ViewBag.iniData = dd;
                 ViewBag.searchString = searchString;
                 return View();
-
             }
             else
             {
@@ -35,36 +33,25 @@ namespace AutorivetMVC.Controllers
             }
             //lLoveBADoc f = new lLoveBADoc();
             //var ff = await f.FetchData(Search);
-
         }
-
         public async System.Threading.Tasks.Task<dynamic> JsonDetails(string Search)
         {
            var bson=await BsonProcess(Search);
             return bson.ToJson();
         }
-
         public async Task<IEnumerable<BsonDocument>> BsonProcess(string Search)
         {
             lLoveBADoc f = new lLoveBADoc();
             var ff = await f.FetchData(Search);
-
             //   var res = ff.Result;
-
-
             return  ff.Select(delegate (BsonDocument p)
-
              {
                  p.RemoveAt(0);
                  var lp = p["netpath"].AsString;
                  p["localpath"] = lp.Replace(BApath, Localpath);
                  return p;
              }
-
               );
         }
-
-
-
     }
 }

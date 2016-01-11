@@ -1,6 +1,5 @@
 ﻿using Microsoft.Owin;
 using Owin;
-
 [assembly: OwinStartupAttribute(typeof(AutorivetMVC.Startup))]
 namespace AutorivetMVC
 {

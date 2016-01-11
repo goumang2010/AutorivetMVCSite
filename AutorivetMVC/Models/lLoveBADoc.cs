@@ -10,12 +10,10 @@ using System.IO;
 using GoumangToolKit46;
 using GoumangToolKit;
 using System.Text.RegularExpressions;
-
 namespace AutorivetMVC.Models
 {
    public  class lLoveBADoc
     {
-
         MongoMethod model;
         // db.loveBA.ensureIndex({filename:"text",title:"text"})
         public lLoveBADoc()
@@ -24,12 +22,10 @@ namespace AutorivetMVC.Models
             var database =(string)(localMethod.GetConfigValue("MONGO_DATABASE", "DBCfg.py"));
             var  collection = (string)(localMethod.GetConfigValue("MONGO_COLNAME", "DBCfg.py"));
             model = new MongoMethod(client, database, collection);
-
         }
         public async Task<IEnumerable<BsonDocument>> FetchData(string filterstr)
         {
           return  await  model.FetchTextData(filterstr);
         }
-
     }
 }

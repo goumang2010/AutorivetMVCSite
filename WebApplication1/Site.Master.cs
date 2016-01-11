@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace WebApplication1
 {
     public partial class SiteMaster : MasterPage
@@ -13,7 +12,6 @@ namespace WebApplication1
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
-
         protected void Page_Init(object sender, EventArgs e)
         {
             // The code below helps to protect against XSRF attacks
@@ -30,7 +28,6 @@ namespace WebApplication1
                 // Generate a new Anti-XSRF token and save to the cookie
                 _antiXsrfTokenValue = Guid.NewGuid().ToString("N");
                 Page.ViewStateUserKey = _antiXsrfTokenValue;
-
                 var responseCookie = new HttpCookie(AntiXsrfTokenKey)
                 {
                     HttpOnly = true,
@@ -42,10 +39,8 @@ namespace WebApplication1
                 }
                 Response.Cookies.Set(responseCookie);
             }
-
             Page.PreLoad += master_Page_PreLoad;
         }
-
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -64,10 +59,8 @@ namespace WebApplication1
                 }
             }
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using GoumangToolKit;
 using DBQuery;
 using System.Data;
-
 namespace AutorivetMVC.Controllers
 {
     public class PartSearchController : Controller
@@ -16,13 +15,10 @@ namespace AutorivetMVC.Controllers
         {
             return View();
         }
-
-      
         public  JsonResult JsonDetails(string extention,string SearchText)
         {
             //"<tr><th>查询图号</th><th>有效版次</th><th>下级装配号</th><th>名称</th><th>有效架次</th><th>分工</th><th>操作</th></tr>"
             var lists = SearchText.Split(new Char[2] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries).ToList();
-
             var dt = QueryParts.queryDataList(extention, lists).AsEnumerable();
             var result = from pp in dt
                          select new
@@ -36,9 +32,6 @@ namespace AutorivetMVC.Controllers
                              Href = pp["Href"].ToString().Replace("\\", "\\\\")
                          };
             return Json(result);
-
         }
-
-
     }
 }

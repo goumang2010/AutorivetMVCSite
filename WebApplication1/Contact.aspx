@@ -1,11 +1,9 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="WebApplication1.Contact" %>
-
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">
         <h1><%: Title %>.</h1>
        <%-- <h2>联系方式</h2>--%>
     </hgroup>
-
     <section class="contact">
         <header>
             <h3>Phone:</h3>
@@ -19,7 +17,6 @@
             <span>425.555.0199</span>
         </p>--%>
     </section>
-
     <section class="contact">
         <header>
             <h3>Email:</h3>
@@ -37,7 +34,6 @@
             <span><a href="mailto:General@example.com">General@example.com</a></span>
         </p>--%>
     </section>
-
 <%--    <section class="contact">
         <header>
             <h3>Address:</h3>

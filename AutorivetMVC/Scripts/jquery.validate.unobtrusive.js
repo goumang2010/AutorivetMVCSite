@@ -16,50 +16,40 @@
 ** Unobtrusive validation support library for jQuery and jQuery Validate
 ** Copyright (C) Microsoft Corporation. All rights reserved.
 */
-
 /*jslint white: true, browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, strict: false */
 /*global document: false, jQuery: false */
-
 (function ($) {
     var $jQval = $.validator,
         adapters,
         data_validation = "unobtrusiveValidation";
-
     function setValidationValues(options, ruleName, value) {
         options.rules[ruleName] = value;
         if (options.message) {
             options.messages[ruleName] = options.message;
         }
     }
-
     function splitAndTrim(value) {
         return value.replace(/^\s+|\s+$/g, "").split(/\s*,\s*/g);
     }
-
     function escapeAttributeValue(value) {
         // As mentioned on http://api.jquery.com/category/selectors/
         return value.replace(/([!"#$%&'()*+,./:;<=>?@\[\\\]^`{|}~])/g, "\\$1");
     }
-
     function getModelPrefix(fieldName) {
         return fieldName.substr(0, fieldName.lastIndexOf(".") + 1);
     }
-
     function appendModelPrefix(value, prefix) {
         if (value.indexOf("*.") === 0) {
             value = value.replace("*.", prefix);
         }
         return value;
     }
-
     function onError(error, inputElement) {  // 'this' is the form element
         var container = $(this).find("[data-valmsg-for='" + escapeAttributeValue(inputElement[0].name) + "']"),
             replaceAttrValue = container.attr("data-valmsg-replace"),
             replace = replaceAttrValue ? $.parseJSON(replaceAttrValue) !== false : null;
-
         container.removeClass("field-validation-valid").addClass("field-validation-error");
         error.data("unobtrusiveContainer", container);
-
         if (replace) {
             container.empty();
             error.removeClass("input-validation-error").appendTo(container);
@@ -68,36 +58,29 @@
             error.hide();
         }
     }
-
     function onErrors(event, validator) {  // 'this' is the form element
         var container = $(this).find("[data-valmsg-summary=true]"),
             list = container.find("ul");
-
         if (list && list.length && validator.errorList.length) {
             list.empty();
             container.addClass("validation-summary-errors").removeClass("validation-summary-valid");
-
             $.each(validator.errorList, function () {
                 $("<li />").html(this.message).appendTo(list);
             });
         }
     }
-
     function onSuccess(error) {  // 'this' is the form element
         var container = error.data("unobtrusiveContainer"),
             replaceAttrValue = container.attr("data-valmsg-replace"),
             replace = replaceAttrValue ? $.parseJSON(replaceAttrValue) : null;
-
         if (container) {
             container.addClass("field-validation-valid").removeClass("field-validation-error");
             error.removeData("unobtrusiveContainer");
-
             if (replace) {
                 container.empty();
             }
         }
     }
-
     function onReset(event) {  // 'this' is the form element
         var $form = $(this);
         $form.data("validator").resetForm();
@@ -111,12 +94,10 @@
             .find(">*")  // If we were using valmsg-replace, get the underlying error
                 .removeData("unobtrusiveContainer");
     }
-
     function validationInfo(form) {
         var $form = $(form),
             result = $form.data(data_validation),
             onResetProxy = $.proxy(onReset, form);
-
         if (!result) {
             result = {
                 options: {  // options structure passed to jQuery Validate's validate() method
@@ -141,13 +122,10 @@
             };
             $form.data(data_validation, result);
         }
-
         return result;
     }
-
     $jQval.unobtrusive = {
         adapters: [],
-
         parseElement: function (element, skipAttach) {
             /// <summary>
             /// Parses a single HTML element for unobtrusive validation attributes.
@@ -160,27 +138,21 @@
             var $element = $(element),
                 form = $element.parents("form")[0],
                 valInfo, rules, messages;
-
             if (!form) {  // Cannot do client-side validation without a form
                 return;
             }
-
             valInfo = validationInfo(form);
             valInfo.options.rules[element.name] = rules = {};
             valInfo.options.messages[element.name] = messages = {};
-
             $.each(this.adapters, function () {
                 var prefix = "data-val-" + this.name,
                     message = $element.attr(prefix),
                     paramValues = {};
-
                 if (message !== undefined) {  // Compare against undefined, because an empty message is legal (and falsy)
                     prefix += "-";
-
                     $.each(this.params, function () {
                         paramValues[this] = $element.attr(prefix + this);
                     });
-
                     this.adapt({
                         element: element,
                         form: form,
@@ -191,14 +163,11 @@
                     });
                 }
             });
-
             $.extend(rules, { "__dummy__": true });
-
             if (!skipAttach) {
                 valInfo.attachValidation();
             }
         },
-
         parse: function (selector) {
             /// <summary>
             /// Parses all the HTML elements in the specified selector. It looks for input elements decorated
@@ -211,11 +180,9 @@
                 .andSelf()
                 .add($(selector).find("form"))
                 .filter("form");
-
             $(selector).find(":input[data-val=true]").each(function () {
                 $jQval.unobtrusive.parseElement(this, true);
             });
-
             $forms.each(function () {
                 var info = validationInfo(this);
                 if (info) {
@@ -224,9 +191,7 @@
             });
         }
     };
-
     adapters = $jQval.unobtrusive.adapters;
-
     adapters.add = function (adapterName, params, fn) {
         /// <summary>Adds a new adapter to convert unobtrusive HTML into a jQuery Validate validation.</summary>
         /// <param name="adapterName" type="String">The name of the adapter to be added. This matches the name used
@@ -244,7 +209,6 @@
         this.push({ name: adapterName, params: params, adapt: fn });
         return this;
     };
-
     adapters.addBool = function (adapterName, ruleName) {
         /// <summary>Adds a new adapter to convert unobtrusive HTML into a jQuery Validate validation, where
         /// the jQuery Validate validation rule has no parameter values.</summary>
@@ -257,7 +221,6 @@
             setValidationValues(options, ruleName || adapterName, true);
         });
     };
-
     adapters.addMinMax = function (adapterName, minRuleName, maxRuleName, minMaxRuleName, minAttribute, maxAttribute) {
         /// <summary>Adds a new adapter to convert unobtrusive HTML into a jQuery Validate validation, where
         /// the jQuery Validate validation has three potential rules (one for min-only, one for max-only, and
@@ -278,7 +241,6 @@
         return this.add(adapterName, [minAttribute || "min", maxAttribute || "max"], function (options) {
             var min = options.params.min,
                 max = options.params.max;
-
             if (min && max) {
                 setValidationValues(options, minMaxRuleName, [min, max]);
             }
@@ -290,7 +252,6 @@
             }
         });
     };
-
     adapters.addSingleVal = function (adapterName, attribute, ruleName) {
         /// <summary>Adds a new adapter to convert unobtrusive HTML into a jQuery Validate validation, where
         /// the jQuery Validate validation rule has a single value.</summary>
@@ -305,21 +266,17 @@
             setValidationValues(options, ruleName || adapterName, options.params[attribute]);
         });
     };
-
     $jQval.addMethod("__dummy__", function (value, element, params) {
         return true;
     });
-
     $jQval.addMethod("regex", function (value, element, params) {
         var match;
         if (this.optional(element)) {
             return true;
         }
-
         match = new RegExp(params).exec(value);
         return (match && (match.index === 0) && (match[0].length === value.length));
     });
-
     $jQval.addMethod("nonalphamin", function (value, element, nonalphamin) {
         var match;
         if (nonalphamin) {
@@ -328,7 +285,6 @@
         }
         return match;
     });
-
     adapters.addSingleVal("accept", "exts").addSingleVal("regex", "pattern");
     adapters.addBool("creditcard").addBool("date").addBool("digits").addBool("email").addBool("number").addBool("url");
     adapters.addMinMax("length", "minlength", "maxlength", "rangelength").addMinMax("range", "min", "max", "range");
@@ -337,7 +293,6 @@
             other = options.params.other,
             fullOtherName = appendModelPrefix(other, prefix),
             element = $(options.form).find(":input[name='" + escapeAttributeValue(fullOtherName) + "']")[0];
-
         setValidationValues(options, "equalTo", element);
     });
     adapters.add("required", function (options) {
@@ -353,14 +308,12 @@
             data: {}
         },
             prefix = getModelPrefix(options.element.name);
-
         $.each(splitAndTrim(options.params.additionalfields || options.element.name), function (i, fieldName) {
             var paramName = appendModelPrefix(fieldName, prefix);
             value.data[paramName] = function () {
                 return $(options.form).find(":input[name='" + escapeAttributeValue(paramName) + "']").val();
             };
         });
-
         setValidationValues(options, "remote", value);
     });
     adapters.add("password", ["min", "nonalphamin", "regex"], function (options) {
@@ -374,7 +327,6 @@
             setValidationValues(options, "regex", options.params.regex);
         }
     });
-
     $(function () {
         $jQval.unobtrusive.parse(document);
     });

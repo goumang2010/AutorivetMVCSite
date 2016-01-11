@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site.Master"  CodeBehind="AutorivetProduct.aspx.cs" Inherits="WebApplication1.AutorivetProduct" Title="Autorivet files" %>
-       
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <section class="featured">
         <div class="content-wrapper">
@@ -14,20 +13,14 @@
     </section>
 </asp:Content>    
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
- 
 <%--      <hgroup class="content-wrapper">
        <%-- <h1><%: Title %>.</h1>--%>
 <%--        <h2>全部自动钻铆工艺文件</h2>
     </hgroup>--%>
-  
     <article>
-       
         <p>
             请筛选你所需要的文件
-                  
        </p>     
-         
-       
         <p>
         <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Height="20px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="138px">
             <asp:ListItem>全部</asp:ListItem>
@@ -40,13 +33,8 @@
             <asp:ListItem>AOI</asp:ListItem>
         </asp:DropDownList>
             </p>
-       
-  
-
          <asp:GridView ID="GridView1" runat="server"   OnRowDataBound="GridView1_RowDataBound" AllowPaging="True"   OnPageIndexChanging="GridView1_PageIndexChanging"  OnRowCommand="GridView1_RowCommand" OnRowCreated="GridView1_RowCreated" CellPadding="4" ForeColor="Black" GridLines="Vertical" Height="983px" Width="1050px"  BackColor="White" BorderColor="#DEDFDE" BorderStyle="Solid" BorderWidth="4px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" > 
-          
                     <AlternatingRowStyle BackColor="White" />
-          
                     <columns>  
                         <asp:templatefield HeaderText="打开方式">  
                             <itemtemplate >  
@@ -62,16 +50,8 @@
                                    AutoPostBack="true" Width="40" /> --%>
                            </itemtemplate>  
                       </asp:templatefield>  
-                     
-                     
-                     
                         <asp:BoundField DataField='编制日期'  HeaderText="创建日期"  />
-                     
-                     
-                     
                         </columns> 
-               
-
                     <FooterStyle BackColor="#CCCC99" />
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Left" />
@@ -81,14 +61,11 @@
                     <SortedAscendingHeaderStyle BackColor="#848384" />
                     <SortedDescendingCellStyle BackColor="#EAEAD3" />
                     <SortedDescendingHeaderStyle BackColor="#575357" />
-               
-
         </asp:GridView>
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="刷新" />
         <p>
             &nbsp;</p>
     </article>
-
 <%--    <aside>
         <h3>aside title</h3>
         <p>        
@@ -100,8 +77,4 @@
             <li><a runat="server" href="~/contact">contact</a></li>
         </ul>
     </aside>--%>
-
-
-
-
 </asp:Content>

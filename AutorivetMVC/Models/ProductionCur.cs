@@ -3,7 +3,6 @@ using System.Linq;
 using GoumangToolKit;
 using System.Data;
 using AutorivetMVC.Models;
-
 namespace MvcApplication1.Models
 {
     public  class ProductionCur
@@ -12,11 +11,9 @@ namespace MvcApplication1.Models
       Product selectedProduct;
       private DataTable allinfo;
         private DataTable rncinfo;
-  
       public  ProductionCur()
      {
            AllInfo = AutorivetDB.production_view();
-
      }
         public void switchSelected(string productChnName,string fuseNO)
         {
@@ -26,20 +23,16 @@ namespace MvcApplication1.Models
                 SelectedProduct = ff.First();
             }
         }
-
         public DataTable AllInfo
       {
             get
           {
-
               return allinfo;
           }
             set
           {
-
                allinfo = value;
                 rncinfo = AutorivetDB.RNC_view();
-
               var jj=  from pp in allinfo.AsEnumerable().GroupBy(p=> p["产品名称"].ToString())
                        join rr in rncinfo.AsEnumerable()
                  on pp.Key equals rr["关联产品"].ToString()
@@ -50,10 +43,7 @@ namespace MvcApplication1.Models
                     rncls=hh
                 };
                 var rncdic = jj.ToDictionary(aa => aa.key, bb => bb.rncls);
-
-
                 Products = new List<Product>();
-
                 Products = (from pp in allinfo.AsEnumerable()
                             select new Product()
                             {
@@ -68,32 +58,19 @@ namespace MvcApplication1.Models
                                 rncnote = pp["备注"].ToString(),
                                 note = pp["状态说明"].ToString(),
                                 rnclist = rncdic[pp["产品名称"].ToString()].Select(p=>p["外部拒收号"].ToString()).ToList()
-
                             }).ToList();
-
                 selectedProduct = Products.Last();
-
-
-
           }
       }
-
-
         public Product SelectedProduct
         {
             get
             {
                 return selectedProduct;
             }
-
-
-
             set
             {
                 selectedProduct = value;
-             
-
-
             }
         }
         public DataTable RNCInfo
@@ -101,7 +78,6 @@ namespace MvcApplication1.Models
             get;
             set;
         }
-
         //public string zhanwei { get; set; }
         //public string state { get; set; }
         //public string rncnote { get; set; }
@@ -110,8 +86,5 @@ namespace MvcApplication1.Models
         //public string enddate { get; set; }
         //public string transferdate { get; set; }
         //public List<string> rnclist { get; set; }
-
-
-
     }
 }

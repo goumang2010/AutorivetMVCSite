@@ -1,23 +1,16 @@
 ﻿@model dynamic
-
-
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>loveBA</title>
-
 </head>
 <body>
     <h1>输入要查询的文件编号，如151-001,可查询一切BA的文件，注意不要带 BAPS等字符</h1>
     <p>
-
         @using (Ajax.BeginForm("JsonDetails", new AjaxOptions
             {
                 HttpMethod = "Post",
@@ -25,14 +18,9 @@
             }))
             {
             <input name="Search" type="text" value="@ViewBag.searchString" />
-            
-
             <input type="submit" value="Search" />
-
         }
-
     </p>
-
     @Styles.Render("~/Content/Production.css")
     <div>
         <table class="Grid" id="Table">
@@ -49,39 +37,11 @@
                 </tr>
             }
             }
-
-
-
         </table>
     </div>
-
-
     </body >
-
-
-
     </html >
-
-
-
     @*Use Ajax to update the data*@
-    <script type="text/javascript">
-        function Show(data) {
-            //return data.filename
-            var jsonStr = eval(data)
-            var tableobj = document.getElementById("Table")
-            var tbtext = "<tr><th>文件名</th><th>标题</th><th>操作</th></tr>"
-
-            for (var dd in jsonStr) {
-                tbtext += "<tr><td>" + (jsonStr[dd].filename) + "</td>";
-                tbtext += "<td>" + (jsonStr[dd].title) + "</td>"
-                tbtext += "<td><a href=" + (jsonStr[dd].localpath) + " target=_blank>打开</a></td>"
-                tbtext += "</tr>";
-            }
-            tableobj.innerHTML = tbtext
-
-            //alert(data);
-        }
-    </script>
-    <script src="~/Scripts/jquery-2.1.4.js" type="text/javascript"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+<script src="~/Scripts/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="~/Scripts/BASearch.js" type="text/javascript"></script>

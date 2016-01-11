@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
-
 <!DOCTYPE html>
 <html lang="zh">
 <head runat="server">
@@ -26,7 +25,6 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title"><a runat="server" href="/">沈飞国际装配中心</a></p>
-
             </div>
             <div class="float-right">
 <%--                <section id="login">

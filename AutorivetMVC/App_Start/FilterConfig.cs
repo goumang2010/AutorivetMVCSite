@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-
 namespace AutorivetMVC
 {
     public class FilterConfig

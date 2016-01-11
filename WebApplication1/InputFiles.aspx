@@ -1,23 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="InputFiles.aspx.cs" Inherits="WebApplication1.InputFiles" %>
-
-
-
-
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">
         <h1><%: Title %>.</h1>
         <h2>输入你的AOI</h2>
     </hgroup>
-
     <article>
         <p>        
             Use this area to provide additional information.
         </p>
-
         <p>        
             Use this area to provide additional information.
         </p>
-
         <p>        
             Use this area to provide additional information.
         </p>
@@ -27,7 +20,6 @@
         <p>
             &nbsp;</p>
     </article>
-
     <aside>
         <h3>Aside Title</h3>
         <p>        

@@ -6,10 +6,7 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 namespace WebApplication1 {
-    
-    
     public partial class ViewSwitcher {
     }
 }
